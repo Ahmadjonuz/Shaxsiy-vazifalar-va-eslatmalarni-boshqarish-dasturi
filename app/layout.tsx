@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Vazifalar va Eslatmalar",
   description: "Shaxsiy vazifalar va eslatmalarni boshqarish dasturi",
-    generator: 'v0.dev'
+    generator: 'Karimov Ahmadjon'
 }
 
 export default function RootLayout({
