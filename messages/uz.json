@@ -1,0 +1,14 @@
+{
+  "hello": "Salom",
+  "login": "Kirish",
+  "register": "Ro'yxatdan o'tish",
+  "logout": "Chiqish",
+  "email": "Email",
+  "password": "Parol",
+  "tasks": "Vazifalar",
+  "add_task": "Vazifa qo'shish",
+  "reminders": "Eslatmalar",
+  "profile": "Profil",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish"
+} 

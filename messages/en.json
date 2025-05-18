@@ -1,0 +1,14 @@
+{
+  "hello": "Hello",
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "email": "Email",
+  "password": "Password",
+  "tasks": "Tasks",
+  "add_task": "Add Task",
+  "reminders": "Reminders",
+  "profile": "Profile",
+  "save": "Save",
+  "cancel": "Cancel"
+} 
