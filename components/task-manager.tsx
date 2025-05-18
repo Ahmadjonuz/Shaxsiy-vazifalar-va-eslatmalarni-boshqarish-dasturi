@@ -17,10 +17,12 @@ import {
   Download,
   RefreshCw,
   Loader2,
+  LogIn,
 } from "lucide-react"
 import { format, addDays, addWeeks, addMonths, isBefore } from "date-fns"
 import { uz } from "date-fns/locale"
 import { useTranslation } from '@/lib/translation-context'
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -105,12 +107,46 @@ interface TaskManagerProps {
   showReminders?: boolean
 }
 
+function LoginPrompt({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation()
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm"
+    >
+      <Card className="w-full max-w-md border-primary/20 p-6 shadow-lg">
+        <CardContent className="space-y-4 text-center">
+          <LogIn className="mx-auto h-12 w-12 text-primary" />
+          <h2 className="text-2xl font-bold">{t.login_required}</h2>
+          <p className="text-muted-foreground">
+            {t.login_to_add_tasks}
+          </p>
+          <div className="flex justify-center gap-4 pt-4">
+            <Button variant="outline" onClick={onClose}>
+              {t.cancel}
+            </Button>
+            <Button asChild className="bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90">
+              <Link href="/auth">
+                {t.login}
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  )
+}
+
 export default function TaskManager({ showReminders = false }: TaskManagerProps) {
   const [tasks, setTasks] = useState<Task[]>([])
   const [reminders, setReminders] = useState<Reminder[]>([])
   const [showTaskForm, setShowTaskForm] = useState(false)
   const [showReminderForm, setShowReminderForm] = useState(false)
   const [showExportDialog, setShowExportDialog] = useState(false)
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false)
   const [filterPriority, setFilterPriority] = useState<TaskPriority | "all">("all")
   const [filterCategory, setFilterCategory] = useState<TaskCategory | "all">("all")
   const [filterCompleted, setFilterCompleted] = useState<"all" | "completed" | "pending">("all")
@@ -667,6 +703,18 @@ export default function TaskManager({ showReminders = false }: TaskManagerProps)
     }
   }
 
+  const handleAddClick = () => {
+    if (!user) {
+      setShowLoginPrompt(true)
+      return
+    }
+    if (showReminders) {
+      setShowReminderForm(true)
+    } else {
+      setShowTaskForm(true)
+    }
+  }
+
   if (isLoading) {
     return (
       <div className="flex h-40 items-center justify-center">
@@ -680,6 +728,12 @@ export default function TaskManager({ showReminders = false }: TaskManagerProps)
 
   return (
     <div className="space-y-6">
+      <AnimatePresence>
+        {showLoginPrompt && (
+          <LoginPrompt onClose={() => setShowLoginPrompt(false)} />
+        )}
+      </AnimatePresence>
+
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
@@ -756,11 +810,11 @@ export default function TaskManager({ showReminders = false }: TaskManagerProps)
           </Button>
 
           <Button
-            onClick={() => (showReminders ? setShowReminderForm(true) : setShowTaskForm(true))}
+            onClick={handleAddClick}
             className="group bg-gradient-to-r from-primary to-purple-500 hover:from-primary/90 hover:to-purple-500/90"
           >
             <Plus className="mr-2 h-4 w-4 transition-transform group-hover:rotate-90" />
-            {showReminders ? t.new_reminder : t.new_task}
+            {showReminders ? t.add_reminder : t.add_task}
           </Button>
         </div>
       </div>

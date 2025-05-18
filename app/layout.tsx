@@ -28,7 +28,7 @@ export default function RootLayout({
   const locale = params?.locale || 'uz';
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <AuthProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <TranslationProvider>

@@ -106,7 +106,10 @@ export const translations = {
     reminder_description: "Eslatma haqida qo'shimcha ma'lumot...",
     please_login: "Davom etish uchun tizimga kiring",
     email_label: "Email",
-    user_type: "Foydalanuvchi turi"
+    user_type: "Foydalanuvchi turi",
+    login_required: "Kirish talab qilinadi",
+    login_to_add_tasks: "Vazifa yoki eslatma qo'shish uchun tizimga kirishingiz kerak",
+    add_reminder: "Eslatma qo'shish"
   },
   ru: {
     hello: "Привет",
@@ -215,7 +218,10 @@ export const translations = {
     reminder_description: "Дополнительная информация о напоминании...",
     please_login: "Пожалуйста, войдите в систему, чтобы продолжить",
     email_label: "Электронная почта",
-    user_type: "Тип пользователя"
+    user_type: "Тип пользователя",
+    login_required: "Требуется вход",
+    login_to_add_tasks: "Пожалуйста, войдите чтобы добавить задачи или напоминания",
+    add_reminder: "Добавить напоминание"
   },
   en: {
     hello: "Hello",
@@ -326,7 +332,10 @@ export const translations = {
     reminder_description: "Additional information about the reminder...",
     please_login: "Please login to continue",
     email_label: "Email",
-    user_type: "User type"
+    user_type: "User type",
+    login_required: "Login Required",
+    login_to_add_tasks: "Please login to add tasks or reminders",
+    add_reminder: "Add Reminder"
   }
 };
 

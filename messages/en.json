@@ -10,5 +10,8 @@
   "reminders": "Reminders",
   "profile": "Profile",
   "save": "Save",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "login_required": "Login Required",
+  "login_to_add_tasks": "Please login to add tasks or reminders",
+  "add_reminder": "Add Reminder"
 } 

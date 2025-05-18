@@ -10,5 +10,8 @@
   "reminders": "Eslatmalar",
   "profile": "Profil",
   "save": "Saqlash",
-  "cancel": "Bekor qilish"
+  "cancel": "Bekor qilish",
+  "login_required": "Kirish talab qilinadi",
+  "login_to_add_tasks": "Vazifa yoki eslatma qo'shish uchun tizimga kirishingiz kerak",
+  "add_reminder": "Eslatma qo'shish"
 } 
